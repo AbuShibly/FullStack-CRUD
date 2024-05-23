@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:HEXP@0..100&display=swap");
+
+:root {
+  --white: rgb(255, 255, 255);
+  --skyblue: rgb(69, 200, 235);
+}
+.nav-bg {
+  background-color: var(--white);
+}
+#nav-link,
+#nav-link-logout {
+  color: black;
+  padding: 0 !important;
+  font-size: 1rem;
+  font-family: "Readex Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "HEXP";
+  text-decoration: none;
+}
+#nav-link:hover {
+  color: var(--skyblue);
+}
+#nav-link-logout:hover {
+  color: red;
+}
+.icon-hover {
+  cursor: pointer;
+}
+.background {
+  background-color: rgb(255, 255, 255, 0.9);
+}
+.table {
+  --bs-table-bg: none !important;
+  --bs-table-color: white !important;
+  --bs-table-hover-color: none !important;
+  --bs-table-hover-bg: none !important;
+}
+.table-th-style {
+  background-color: rgb(44, 109, 55);
+}
+.table-tr-style {
+  background-color: rgb(0, 0, 0, 0.9);
+}
+.table-tr-style:hover {
+  background-color: rgb(255, 255, 255, 0.9);
+}
+.table-tr-style:hover .table-data {
+  color: black;
+}
