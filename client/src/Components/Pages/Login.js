@@ -83,7 +83,11 @@ const Login = () => {
     await axios
       .post(URL, formData)
       .then((res) => {
-        // console.log(res.data.Message);
+        console.log(res.data.return);
+        const userData = res?.data?.return;
+        localStorage.setItem("userData", JSON.stringify(userData));
+        const event = new Event("userDataChanged");
+        window.dispatchEvent(event);
         if (res.status === 200) {
           toast.info(`${res.data.Message}`, {
             position: "top-right",

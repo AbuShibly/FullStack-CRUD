@@ -8,6 +8,7 @@ import videoBg from "./Components/Assets/Images/bgvid.mp4";
 import "./Components/Assets/Styles/bgvid.css";
 import "./index.css";
 import Notfound from "./Components/Common/Notfound";
+import ProtectedRoute from "./Components/Common/ProtectedRoute";
 
 function App() {
   return (
@@ -18,10 +19,25 @@ function App() {
           <CollapsibleExample />
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/home" element={<UserData />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/update" element={<Update />} />
             <Route path="*" element={<Notfound />} />
+            <Route path="/signup" element={<SignUp />} />
+
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <UserData />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/update"
+              element={
+                <ProtectedRoute>
+                  <Update />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </div>

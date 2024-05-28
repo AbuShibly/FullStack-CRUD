@@ -36,9 +36,9 @@ const modal = mongoose.model("userdata", Schema);
 
 app.post("/post", async (req, res) => {
   const existingUser = await modal.findOne({ email: req.body.email });
-    if (existingUser) {
-      return res.status(400).json({ Message: "Email already exists" });
-    }
+  if (existingUser) {
+    return res.status(400).json({ Message: "Email already exists" });
+  }
   const Data = new modal({
     name: req.body.name,
     email: req.body.email,
@@ -66,8 +66,13 @@ app.post("/login", async (req, res) => {
   // if (email !== user?.email) {
   //   res.status(404).json({ Message: "Wrong Email" });
   // }
+  const userData = {
+    id: user._id,
+    name: user.name,
+    avatar: user.avatar,
+  };
   if (password === user?.password) {
-    res.status(200).json({ Message: "Login Successfull" });
+    res.status(200).json({ Message: "Login Successfull", return: userData });
   }
   if (password !== user?.password) {
     res.status(404).json({ Message: "Wrong Username or Password" });
