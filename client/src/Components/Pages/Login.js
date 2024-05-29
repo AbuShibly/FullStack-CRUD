@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FloatingLabel } from "react-bootstrap";
 import axios from "axios";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -103,8 +104,10 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        if (err.response.data.Message) {
-          toast.info(`${err.response.data.Message}`, {
+        const error = err?.response?.data?.Message;
+        console.log(error);
+        if (error) {
+          toast.info(`${error}`, {
             position: "top-center",
             type: "warning",
             autoClose: 3000,
@@ -114,6 +117,12 @@ const Login = () => {
           });
         }
       });
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -139,10 +148,13 @@ const Login = () => {
           className="mb-4"
         >
           <Form.Control
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <span onClick={handleShowPassword} className="Eye-icon">
+            {showPassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+          </span>
         </FloatingLabel>
         <div className="mt-4 d-flex flex-column gap-3">
           <Button onClick={loginData} variant="success" type="submit">

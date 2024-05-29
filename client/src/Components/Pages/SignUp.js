@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FloatingLabel } from "react-bootstrap";
 import axios from "axios";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Assets/Styles/Nav.css";
@@ -157,6 +158,12 @@ const SignUp = () => {
       });
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="d-flex justify-content-center align-items-center my-5 p-5 vh-100">
       <Form className="shadow-lg p-5 rounded-3 background">
@@ -191,10 +198,13 @@ const SignUp = () => {
           className="mb-4"
         >
           <Form.Control
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          <span onClick={handleShowPassword} className="Eye-icon">
+            {showPassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+          </span>
         </FloatingLabel>
 
         <FloatingLabel

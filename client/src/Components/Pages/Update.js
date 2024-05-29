@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -150,6 +151,12 @@ const Update = () => {
       });
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="d-flex justify-content-center align-items-center my-5 p-5 vh-100">
       <Form className="shadow-lg p-5 rounded-3 background">
@@ -174,14 +181,20 @@ const Update = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group
+          className="mb-3 position-relative"
+          controlId="formBasicPassword"
+        >
           <Form.Label>Password :</Form.Label>
           <Form.Control
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
+          <span onClick={handleShowPassword} className="Eye-icon2">
+            {showPassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
+          </span>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPhone">

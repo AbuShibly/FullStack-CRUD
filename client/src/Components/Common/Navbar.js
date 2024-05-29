@@ -40,7 +40,7 @@ function CollapsibleExample() {
     >
       <Container>
         <Navbar.Brand href="/home">
-          <img src={Logo} className="img-fluid" alt="Logo" width={150} />
+          <img src={Logo} className="img-fluid" alt="Logo" width={30} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

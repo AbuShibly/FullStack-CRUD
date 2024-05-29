@@ -50,3 +50,25 @@
 .table-tr-style:hover .table-data {
   color: black;
 }
+.position-relative {
+  position: relative;
+}
+.Eye-icon {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+.position-relative {
+  position: relative;
+}
+.Eye-icon2 {
+  position: absolute;
+  right: 5%;
+  top: 55%;
+  /* transform: translateX(-50%); */
+  cursor: pointer;
+  z-index: 2;
+}

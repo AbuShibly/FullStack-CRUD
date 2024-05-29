@@ -60,22 +60,16 @@ app.get("/get", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = await modal.findOne({ email: email });
-  console.log(user);
-  console.log(user?.password);
-
-  // if (email !== user?.email) {
-  //   res.status(404).json({ Message: "Wrong Email" });
-  // }
-  const userData = {
-    id: user._id,
-    name: user.name,
-    avatar: user.avatar,
-  };
-  if (password === user?.password) {
-    res.status(200).json({ Message: "Login Successfull", return: userData });
+  if (!user) {
+    res.status(404).json({ Message: "Email Not Found" });
   }
-  if (password !== user?.password) {
-    res.status(404).json({ Message: "Wrong Username or Password" });
+  if (password === user?.password) {
+    const userData = {
+      id: user._id,
+      name: user.name,
+      avatar: user.avatar,
+    };
+    res.status(200).json({ Message: "Login Successfull", return: userData });
   }
 });
 
